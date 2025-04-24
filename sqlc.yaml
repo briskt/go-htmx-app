@@ -1,0 +1,16 @@
+version: "2"
+sql:
+  - engine: "postgresql"
+    queries: "query.sql"
+    schema: "goose"
+    gen:
+      go:
+        out: "data/sqlc"
+        emit_empty_slices: true
+        emit_enum_valid_method: true
+        emit_sql_as_comment: true
+        initialisms: [ "id", "uuid", "utc" ]
+        query_parameter_limit: 2
+        overrides:
+          - db_type: "integer"
+            go_type: "int"

@@ -1,0 +1,16 @@
+<?php
+/**
+ * SAML 2.0 remote SP metadata for SimpleSAMLphp.
+ *
+ * See: https://simplesamlphp.org/docs/stable/simplesamlphp-reference-sp-remote
+ */
+
+/*
+ * Example SimpleSAMLphp SAML 2.0 SP
+ */
+$metadata['localhost'] = [
+    'entityid' => 'localhost',
+    'AssertionConsumerService' => 'http://localhost:8100/auth/callback',
+    'SingleLogoutService' => 'http://localhost:8100/auth/logout-callback',
+    'certData' => 'MIIEazCCAtOgAwIBAgIUEtsUsEK6eYn6Y95PqEB9a5kywPAwDQYJKoZIhvcNAQELBQAwRTELMAkGA1UEBhMCQVUxEzARBgNVBAgMClNvbWUtU3RhdGUxITAfBgNVBAoMGEludGVybmV0IFdpZGdpdHMgUHR5IEx0ZDAeFw0yNDA5MDIxMjQzNDhaFw0zNDA5MDIxMjQzNDhaMEUxCzAJBgNVBAYTAkFVMRMwEQYDVQQIDApTb21lLVN0YXRlMSEwHwYDVQQKDBhJbnRlcm5ldCBXaWRnaXRzIFB0eSBMdGQwggGiMA0GCSqGSIb3DQEBAQUAA4IBjwAwggGKAoIBgQCxDXZ1hSzNWGbtVhNgeuTvr94F06NBxC4Y/v9zYhgGqYRdYPv/pfxfj/EfE7DYPlTL12MJtX+i6N9F18dLy+bAM6OaJlNoZEG6/wqwoBdVTu741v1/n53wLrPZ6NaYDeRFWm0FVDVVNNJGASSLbw7ANVpzJDGutZLW3vRfgR0rhJl/AJ8f9mJFF9B4TnVDgnTzL1ksMFLPZT5NysEQ4Nl7nakuYOKe5YorW+MThVNT+u74SChyrMStPm3jb5O8Q5Y0GBn85Hm/Wqg3geIbXE0xgK0eYVUVkZ1xpOCyCrU/T+CDuolOgMW4Qr3JbHHcwFEjALd0JFfjVckOluMhh/rVTdnWQ4Lpoey0+XIMdzFnC9FF3k2tah1dyKBeasSYMnLKabnbWMdqRV0DhWDy5Mrk6pF4XqZGi3GnpQ46K+rQPDuHotqEaRcrB2yBBATGJ+qKAXKa5rZ/UnUq4FM3qmRY5Mokoh1YrIuycm9UJmhYh6bScQRcEpNlIoNmv7iYQW8CAwEAAaNTMFEwHQYDVR0OBBYEFNFvJxo/NvsX0WaOvxnjg+/jTwoEMB8GA1UdIwQYMBaAFNFvJxo/NvsX0WaOvxnjg+/jTwoEMA8GA1UdEwEB/wQFMAMBAf8wDQYJKoZIhvcNAQELBQADggGBAKldOvp0NENCWm6PfQojkq7npcNKl1ppHOQfbh+bE/XLpedT/Rg/4COGdztNVFXYGNboI/0l9SOils5v3zd56I/7ETIJu2Fg5NbItIiz8JLszmh1mRJw/tspB3LJ2Ukvj2feMPLkK1bgKtbU9NbOJeFX+izieErLGsE5KLd8xPsTPYxQyYWLOWKS3JB9uQXkS6HFHqYXRAoML/LgpJoQ1aVKyeF2RFrq5m/GDcxrjGMEGha2de5ePD/T5HsdT7iciqB+tftCY/+wdS7imnQQejoR6CWtvJmSBZJDTT3i85glBp71VC0IMD7ZtWFBVdM5kuXk6XZfCH05nPRF2r2WcUdqfWaTWIANHy3LZEVgItf+NoSA1VvqWFx48dpOMB27Oj86vvWSGStI/Ztsvq1q1IWwux7+CkzMqlSZq8XaLyuyDINVXSmisjONTAJ2AapMKJNCrS4EtksHaxNwm9hsjaQZwhmWrNoPyROu3rxiX+2wWWw8NmSSlcHsKwe/KaIGew==',
+];

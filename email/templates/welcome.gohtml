@@ -1,0 +1,26 @@
+{{ define "body" }}
+  <p>
+    Dear {{ .DisplayName }},
+  </p>
+  <p>
+    Thank you for visiting {{ .AppName }}. Your profile has been created. Below is some important information
+    that you may want to keep for future reference.
+  </p>
+
+  <ul>
+    <li>
+      <strong>Username:</strong> {{ .Username }}
+    </li>
+
+    {{ if .HelpCenterURL }}
+      <li>
+        <strong>Help & FAQs:</strong>
+        <a href="{{ .HelpCenterURL }}">{{ .HelpCenterURL }}</a>
+      </li>
+    {{ end }}
+
+    <li>
+      <strong>Contact Support:</strong> {{ .SupportEmail }}
+    </li>
+  </ul>
+{{ end }}

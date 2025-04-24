@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+{{ template "head.gohtml" . }}
+<body>
+
+{{ template "header.gohtml" . }}
+
+<div class="profile-container">
+  <h1>My {{ .AppName }} App</h1>
+
+  <div class="profile-info">
+    <p><span class="pr-12">Username:</span> {{ .Username }}</p>
+    <p><span class="pr-12">Last login:</span> {{ .LastLogin }}</p>
+  </div>
+
+  <div class="sections">
+      {{ template "card.gohtml" . }}
+  </div>
+</div>
+</body>
+</html>

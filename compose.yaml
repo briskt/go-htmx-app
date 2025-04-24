@@ -1,0 +1,170 @@
+x-db_env: &db_env
+  POSTGRES_DB: "db"
+  POSTGRES_USER: "user"
+  POSTGRES_PASSWORD: "pass"
+
+x-mysql_env: &mysql_env
+  MYSQL_DATABASE: "db"
+  MYSQL_USER: "user"
+  MYSQL_PASSWORD: "pass"
+  MYSQL_ROOT_PASSWORD: "pass"
+
+x-saml_env: &saml_env
+  SAML_SP_ENTITY_ID: "localhost"
+  SAML_SP_CERT: "MIIEazCCAtOgAwIBAgIUEtsUsEK6eYn6Y95PqEB9a5kywPAwDQYJKoZIhvcNAQELBQAwRTELMAkGA1UEBhMCQVUxEzARBgNVBAgMClNvbWUtU3RhdGUxITAfBgNVBAoMGEludGVybmV0IFdpZGdpdHMgUHR5IEx0ZDAeFw0yNDA5MDIxMjQzNDhaFw0zNDA5MDIxMjQzNDhaMEUxCzAJBgNVBAYTAkFVMRMwEQYDVQQIDApTb21lLVN0YXRlMSEwHwYDVQQKDBhJbnRlcm5ldCBXaWRnaXRzIFB0eSBMdGQwggGiMA0GCSqGSIb3DQEBAQUAA4IBjwAwggGKAoIBgQCxDXZ1hSzNWGbtVhNgeuTvr94F06NBxC4Y/v9zYhgGqYRdYPv/pfxfj/EfE7DYPlTL12MJtX+i6N9F18dLy+bAM6OaJlNoZEG6/wqwoBdVTu741v1/n53wLrPZ6NaYDeRFWm0FVDVVNNJGASSLbw7ANVpzJDGutZLW3vRfgR0rhJl/AJ8f9mJFF9B4TnVDgnTzL1ksMFLPZT5NysEQ4Nl7nakuYOKe5YorW+MThVNT+u74SChyrMStPm3jb5O8Q5Y0GBn85Hm/Wqg3geIbXE0xgK0eYVUVkZ1xpOCyCrU/T+CDuolOgMW4Qr3JbHHcwFEjALd0JFfjVckOluMhh/rVTdnWQ4Lpoey0+XIMdzFnC9FF3k2tah1dyKBeasSYMnLKabnbWMdqRV0DhWDy5Mrk6pF4XqZGi3GnpQ46K+rQPDuHotqEaRcrB2yBBATGJ+qKAXKa5rZ/UnUq4FM3qmRY5Mokoh1YrIuycm9UJmhYh6bScQRcEpNlIoNmv7iYQW8CAwEAAaNTMFEwHQYDVR0OBBYEFNFvJxo/NvsX0WaOvxnjg+/jTwoEMB8GA1UdIwQYMBaAFNFvJxo/NvsX0WaOvxnjg+/jTwoEMA8GA1UdEwEB/wQFMAMBAf8wDQYJKoZIhvcNAQELBQADggGBAKldOvp0NENCWm6PfQojkq7npcNKl1ppHOQfbh+bE/XLpedT/Rg/4COGdztNVFXYGNboI/0l9SOils5v3zd56I/7ETIJu2Fg5NbItIiz8JLszmh1mRJw/tspB3LJ2Ukvj2feMPLkK1bgKtbU9NbOJeFX+izieErLGsE5KLd8xPsTPYxQyYWLOWKS3JB9uQXkS6HFHqYXRAoML/LgpJoQ1aVKyeF2RFrq5m/GDcxrjGMEGha2de5ePD/T5HsdT7iciqB+tftCY/+wdS7imnQQejoR6CWtvJmSBZJDTT3i85glBp71VC0IMD7ZtWFBVdM5kuXk6XZfCH05nPRF2r2WcUdqfWaTWIANHy3LZEVgItf+NoSA1VvqWFx48dpOMB27Oj86vvWSGStI/Ztsvq1q1IWwux7+CkzMqlSZq8XaLyuyDINVXSmisjONTAJ2AapMKJNCrS4EtksHaxNwm9hsjaQZwhmWrNoPyROu3rxiX+2wWWw8NmSSlcHsKwe/KaIGew=="
+  SAML_SP_PRIVATE_KEY: "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"
+  SAML_ASSERTION_CONSUMER_SERVICE_URL: "http://localhost:8100/auth/callback"
+  SAML_IDP_METADATA_URL: "http://idp/module.php/sildisco/metadata.php?format=xml"
+
+x-postgres_healthcheck: &postgres_healthcheck
+  healthcheck:
+    test: [ "CMD", "pg_isready", "-d", "db", "-U", "user" ]
+    start_period: 1s
+    interval: 500ms
+    timeout: 100ms
+    retries: 3
+
+x-mysql_healthcheck: &mysql_healthcheck
+  healthcheck:
+    test: [ "CMD", "healthcheck.sh", "--connect", "--innodb_initialized" ]
+    start_period: 10s
+    interval: 10s
+    timeout: 5s
+    retries: 3
+
+services:
+
+  app:
+    build: .
+    depends_on:
+      idp:
+        condition: service_started
+      db:
+        condition: service_healthy
+    volumes:
+      - .:/src
+    ports: [ "8100:80" ]
+    env_file:
+      - path: ./local.env
+        required: false
+    environment:
+      <<: [ *db_env, *saml_env ]
+      APP_ENV: "dev"
+      API_ACCESS_KEYS: "abc123"
+      DISABLE_TLS: "true"
+      POSTGRES_HOST: "db"
+      SESSION_SECRET: "abcdefgh01234567"
+    command: >
+      bash -c "goose -dir goose postgres -allow-missing 'postgres://user:pass@db/db?sslmode=disable' up &&
+      goose postgres -dir dev/seeds 'postgres://user:pass@db/db?sslmode=disable' up &&
+      air"
+
+  db:
+    image: postgres:17
+    ports: [ "8103:5432" ]
+    environment: *db_env
+    <<: *postgres_healthcheck
+
+  test:
+    build: .
+    depends_on:
+      test_db:
+        condition: service_healthy
+    volumes:
+      - .:/src
+    environment:
+      <<: [ *db_env, *saml_env ]
+      APP_ENV: "test"
+      DISABLE_TLS: "true"
+      DB_HOST: "test_db"
+    command: go test -p 1 ./...
+
+  test_db:
+    image: postgres:17
+    ports: [ "5432" ]
+    environment: *db_env
+    <<: *postgres_healthcheck
+
+  adminer:
+    image: adminer
+    ports: [ "8101:8080" ]
+
+  adminer_testdb:
+    image: adminer
+    ports: [ "8102:8080" ]
+
+  idp:
+    image: silintl/ssp-base:10
+    depends_on:
+      idp_db:
+        condition: service_healthy
+      broker:
+        condition: service_started
+    volumes:
+      - ./dev/ssp-base/saml.crt:/data/vendor/simplesamlphp/simplesamlphp/cert/saml.crt
+      - ./dev/ssp-base/saml.pem:/data/vendor/simplesamlphp/simplesamlphp/cert/saml.pem
+      - ./dev/ssp-base/saml20-idp-hosted.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-idp-hosted.php
+      - ./dev/ssp-base/saml20-sp-remote.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-sp-remote.php
+    ports: [ "8106:80" ]
+    environment:
+      ADMIN_PASS: "pass"
+      BASE_URL_PATH: "http://localhost:8106"
+      REMEMBER_ME_SECRET: "xxxxxx"
+      SECRET_SALT: "abc123"
+      SECURE_COOKIE: "false"
+      TRUSTED_URL_DOMAINS: "localhost:8100"
+      IDP_DOMAIN_NAME: "idp"
+      ID_BROKER_ACCESS_TOKEN: "abc123"
+      ID_BROKER_BASE_URI: "//broker"
+      ID_BROKER_ASSERT_VALID_IP: "false"
+      LOGGING_LEVEL: "DEBUG"
+      MYSQL_HOST: "idp_db"
+      <<: *mysql_env
+    command: >
+      bash -c "/data/vendor/simplesamlphp/simplesamlphp/modules/silauth/src/Auth/Source/yii migrate --interactive=0 &&
+      /data/run.sh"
+
+  idp_db:
+    image: mariadb:10
+    ports: [ "3306" ]
+    environment: *mysql_env
+    <<: *mysql_healthcheck
+
+  broker:
+    image: silintl/idp-id-broker:6
+    ports: [ "8107:80" ]
+    depends_on:
+      broker_db:
+        condition: service_healthy
+    volumes:
+      - ./dev/broker/m991231_235959_seeds.php:/data/console/migrations/m991231_235959_seeds.php
+    environment:
+      API_ACCESS_KEYS: "abc123"
+      IDP_NAME: "idp"
+      EMAIL_SERVICE_baseUrl: "-"
+      EMAIL_SERVICE_accessToken: "-"
+      EMAIL_SERVICE_assertValidIp: "false"
+      MYSQL_HOST: "broker_db"
+      EMAIL_SIGNATURE: "foo"
+      SUPPORT_EMAIL: "foo"
+      APP_ENV: "dev"
+      <<: *mysql_env
+      RP_ORIGINS: "https://idp"
+    command: [ "bash", "-c", "./yii migrate --interactive=0 && ./run.sh" ]
+
+  broker_db:
+    image: mariadb:10
+    ports: [ "3306" ]
+    environment: *mysql_env
+    <<: *mysql_healthcheck
+
+  broker_pma:
+    image: phpmyadmin
+    ports: [ "8108:80" ]
+    environment:
+      PMA_HOST: "broker_db"
+      PMA_USER: "user"
+      PMA_PASSWORD: "pass"
+
+volumes:
+  composer-cache: { }

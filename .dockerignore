@@ -1,0 +1,24 @@
+.idea/
+bin/
+dev/
+vendor/
+
+### air-verse/air temp folder
+tmp/
+
+### sqlc generated files
+data/db.go
+data/models.go
+data/query.sql.go
+
+.dockerignore
+.gitignore
+docker-compose.yml
+Dockerfile
+
+
+### files potentially containing secrets
+*.env
+*.aes
+*.crt
+*.pem
