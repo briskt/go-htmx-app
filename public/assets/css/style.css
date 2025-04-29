@@ -94,7 +94,7 @@ h1 {
 }
 
 .justify-center {
-  justify-content: center
+  justify-content: center;
 }
 
 .max-height-7em {
@@ -140,7 +140,7 @@ h1 {
 .badge {
   max-height: 40px;
 }
-
+/* 
 .card {
   background-color: #fff;
   border: 1px solid #ddd;
@@ -159,7 +159,7 @@ h1 {
   font-size: 0.9em;
   color: #666;
   margin-bottom: 10px;
-}
+} */
 
 .align-center {
   display: flex;
@@ -177,7 +177,8 @@ button {
   transition: background-color 0.3s;
 }
 
-button:disabled, button:disabled:hover {
+button:disabled,
+button:disabled:hover {
   background-color: white;
   opacity: 0.5;
   color: #f57c00;

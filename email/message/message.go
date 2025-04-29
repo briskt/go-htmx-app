@@ -94,5 +94,5 @@ func (m Message) Subject() string {
 }
 
 func (m Message) Images() map[string]string {
-	return m.images
+	return m.images 
 }

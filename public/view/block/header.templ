@@ -1,0 +1,18 @@
+package block
+
+templ Header(displayName string, helpCenterURL templ.SafeURL, authenticated bool) {
+  <header>
+    <a href="/">
+      <img src="/assets/img/logo.png" alt="Logo" />
+    </a>
+    <span>{displayName}</span>
+    <div class="">
+      if authenticated {
+        <a href="/auth/logout">Log Out</a>
+      } else {
+        <a href="/auth/login">Log In</a>
+      }
+      <a href={helpCenterURL}>Help</a>
+    </div>
+  </header>
+}

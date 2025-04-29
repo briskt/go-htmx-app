@@ -1,0 +1,17 @@
+package card
+
+templ Card(enabled bool) {
+  <div class="p-4 rounded-sm shadow-sm bg-slate-300" id="card">
+    <h3>Card</h3>
+    <p>
+      This is a card.
+    </p>
+    <button hx-put="/card" hx-target="#card" hx-swap="outerHTML">
+     if enabled {
+      Turn Off 
+      } else {
+      Turn On
+      }
+    </button>
+  </div>
+}

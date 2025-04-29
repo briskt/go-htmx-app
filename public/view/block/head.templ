@@ -1,0 +1,31 @@
+package block
+
+templ Head(appName string, displayName string, helpCenterURL templ.SafeURL, authenticated bool) {
+   <!DOCTYPE html>
+  <html lang="en">
+   <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Go-HTMX Starter App - My {appName} app</title>
+    <link rel="icon" type="image/x-icon" href="/assets/img/favicon.ico" />
+    <link rel="stylesheet" href="/assets/css/tailwind.output.css">
+    <link rel="stylesheet" href="/assets/css/style.css" />
+
+    <script src="https://unpkg.com/htmx.org@2.0.3"></script>
+    <script>
+      window.addEventListener('htmx:responseError', (e)=>{
+        if(e.detail.xhr.status === 401){
+          console.log('received 401, redirecting to login');
+          window.location.href = '/auth/login';
+        }
+      });
+    </script>
+  </head>
+    <body>
+      @Header(displayName, helpCenterURL, authenticated)
+      {children...}
+       </body>
+  </html>
+
+  
+}

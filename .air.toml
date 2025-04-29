@@ -13,7 +13,7 @@ bin = "bin/app"
 # Customize binary, can setup environment variables when run your app.
 full_bin = "./bin/app"
 # Watch these filename extensions.
-include_ext = ["go", "gohtml", "sql", "yaml", "css"]
+include_ext = ["go", "gohtml", "sql", "yaml", "templ"]
 # Ignore these filename extensions or directories.
 exclude_dir = ["vendor", "logs", "assets", "tmp", "bin", "data/sqlc", "dev"]
 # Watch these directories if you specified.
