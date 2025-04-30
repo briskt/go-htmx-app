@@ -1,12 +1,11 @@
+# Go HTMX App
 
-# Go HTMX App 
-
-A quick-start app template using Go and HTMX 
+A quick-start app template using Go, Templ, Tailwind, DaisyUI and HTMX
 
 ## Included features
 
 - authentication using a [SAML Identity Provider](https://github.com/silinternational/ssp-base)
-- basic home page starting point with Go standard library template fragments and components
+- basic homepage starting point built with the Templ templating engine for Go, styled using Tailwind CSS and DaisyUI, and enhanced with HTMX for interactivity.
 - email notification using [MailGun](https://www.mailgun.com/) or [AWS SES](https://aws.amazon.com/ses/)
 - database migration using [Goose](https://github.com/pressly/goose)
 - database connection using [sqlc](https://github.com/sqlc-dev/sqlc)
