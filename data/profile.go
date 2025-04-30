@@ -2,7 +2,6 @@ package data
 
 import "github.com/a-h/templ"
 
-
 type ProfileView struct {
 	DisplayName   string
 	Enabled       bool

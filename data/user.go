@@ -9,7 +9,7 @@ import (
 )
 
 type User struct {
-	sqlc.User 
+	sqlc.User
 }
 
 type UserCreateInput struct {
