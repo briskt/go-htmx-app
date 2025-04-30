@@ -29,20 +29,20 @@ func Head(appName string, displayName string, helpCenterURL templ.SafeURL, authe
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<!doctype html><html lang=\"en\"><head><meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><title>Go-HTMX Starter App - My ")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<!doctype html><html lang=\"en\" class=\"bg-gray-50\"><head><meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><title>Go-HTMX Starter App - ")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var2 string
 		templ_7745c5c3_Var2, templ_7745c5c3_Err = templ.JoinStringErrs(appName)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `public/view/block/head.templ`, Line: 9, Col: 44}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `public/view/block/head.templ`, Line: 9, Col: 41}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var2))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, " app</title><link rel=\"icon\" type=\"image/x-icon\" href=\"/assets/img/favicon.ico\"><link rel=\"stylesheet\" href=\"/assets/css/tailwind.output.css\"><link rel=\"stylesheet\" href=\"/assets/css/style.css\"><script src=\"https://unpkg.com/htmx.org@2.0.3\"></script><script>\n      window.addEventListener('htmx:responseError', (e)=>{\n        if(e.detail.xhr.status === 401){\n          console.log('received 401, redirecting to login');\n          window.location.href = '/auth/login';\n        }\n      });\n    </script></head><body>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "</title><link rel=\"icon\" type=\"image/x-icon\" href=\"/assets/img/favicon.ico\"><link rel=\"stylesheet\" href=\"/assets/css/tailwind.output.css\"><link rel=\"stylesheet\" href=\"/assets/css/style.css\"><script src=\"https://unpkg.com/htmx.org@2.0.3\"></script><script>\n      window.addEventListener('htmx:responseError', (e)=>{\n        if(e.detail.xhr.status === 401){\n          console.log('received 401, redirecting to login');\n          window.location.href = '/auth/login';\n        }\n      });\n    </script></head>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -50,11 +50,15 @@ func Head(appName string, displayName string, helpCenterURL templ.SafeURL, authe
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "<body><div class=\"container flex flex-col gap-6 p-3 mx-auto\">")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
 		templ_7745c5c3_Err = templ_7745c5c3_Var1.Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "</body></html>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "</div></body></html>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

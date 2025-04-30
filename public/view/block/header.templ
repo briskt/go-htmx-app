@@ -1,18 +1,20 @@
 package block
 
 templ Header(displayName string, helpCenterURL templ.SafeURL, authenticated bool) {
-  <header>
-    <a href="/">
-      <img src="/assets/img/logo.png" alt="Logo" />
-    </a>
-    <span>{displayName}</span>
-    <div class="">
-      if authenticated {
-        <a href="/auth/logout">Log Out</a>
-      } else {
-        <a href="/auth/login">Log In</a>
-      }
-      <a href={helpCenterURL}>Help</a>
-    </div>
-  </header>
+	<header class="px-4 bg-white shadow-sm navbar">
+		<div class="gap-5 navbar-start">
+			<a href="/">
+				<img src="/assets/img/logo.png" alt="Logo" class="w-12 h-12"/>
+			</a>
+			<h1 class="text-2xl font-bold">{ displayName }</h1>
+		</div>
+		<div class="gap-5 navbar-end">
+			if authenticated {
+				<a class="btn" href="/auth/logout">Log Out</a>
+			} else {
+				<a href="/auth/login" class="btn">Log In</a>
+			}
+			<a href={ helpCenterURL } class="btn">Help</a>
+		</div>
+	</header>
 }

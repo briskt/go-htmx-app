@@ -1,24 +1,30 @@
 package view
+
 import (
-  "github.com/briskt/go-htmx-app/public/view/card"
-  "github.com/briskt/go-htmx-app/public/view/block"
 	"github.com/briskt/go-htmx-app/data"
+	"github.com/briskt/go-htmx-app/public/view/block"
+	"github.com/briskt/go-htmx-app/public/view/card"
 )
 
 templ Home(profile data.ProfileView) {
-  @block.Head(profile.AppName, profile.DisplayName, profile.HelpCenterURL, true) {
-      <div class="profile-container">
-
-        <h1 class="text-xl">My {profile.AppName}</h1>
-
-        <div class="profile-info">
-          <p><span class="pr-12">Username:</span> {profile.Username}</p>
-          <p><span class="pr-12">Last login:</span> {profile.LastLogin}</p>
-        </div>
-
-        <div class="sections">
-          @card.Card(profile.Enabled)
-        </div>
-      </div>
-  }
+	@block.Head(profile.AppName, profile.DisplayName, profile.HelpCenterURL, true) {
+		<h1 class="my-3 text-5xl font-bold">{ profile.AppName }</h1>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Username</th>
+					<th>Last login</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th>{ profile.Username }</th>
+					<td>{ profile.LastLogin }</td>
+				</tr>
+			</tbody>
+		</table>
+		<div class="sections">
+			@card.Card(profile.Enabled, true)
+		</div>
+	}
 }

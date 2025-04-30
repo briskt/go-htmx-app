@@ -1,4 +1,4 @@
-FROM golang:1.23 
+FROM golang:1.23
 
 WORKDIR /src
 
@@ -8,9 +8,6 @@ RUN apt-get update && \
     curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && \
     apt-get install -y nodejs && \
     npm install -g npm
-
-# Install Tailwind CLI and DaisyUI
-RUN npm install -g tailwindcss@3.4.17 @tailwindcss/cli@latest daisyui@latest
 
 # cosmtrk/air is a project auto-build tool
 RUN go install github.com/air-verse/air@latest
@@ -37,5 +34,3 @@ COPY --chown=user ./go.sum go.sum
 RUN go mod download
 
 COPY --chown=user . .
-
-CMD ["air"]

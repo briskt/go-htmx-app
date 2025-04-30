@@ -8,5 +8,5 @@ set -x
 
 sqlc generate
 templ generate
-npx --yes tailwindcss@3.4.17 -i ./public/assets/css/tailwind.css -o ./public/assets/css/tailwind.output.css --minify
+npx --yes @tailwindcss/cli -i ./public/assets/css/tailwind.css -o ./public/assets/css/tailwind.output.css --minify
 go build -o ./bin/app ./cmd/server

@@ -46,7 +46,7 @@ func renderHome(c echo.Context, user data.User) error {
 // card responds to the button on "card"
 func cardItem(c echo.Context) error {
 	enabled = !enabled
-	return c.Render(http.StatusOK, "", card.Card(enabled))
+	return c.Render(http.StatusOK, "", card.Card(enabled, true))
 }
 
 // formatNullDate returns a long-form, user-friendly date string from a valid sql.NullTime. If invalid, it returns "-"
