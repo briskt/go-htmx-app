@@ -1,13 +1,13 @@
 package view
 
 import (
-	"github.com/briskt/go-htmx-app/data"
-	"github.com/briskt/go-htmx-app/public/view/block"
-	"github.com/briskt/go-htmx-app/public/view/card"
+	"github.com/briskt/go-htmx-app/app"
+	"github.com/briskt/go-htmx-app/public/view/components"
+	"github.com/briskt/go-htmx-app/public/view/layout"
 )
 
-templ Home(profile data.ProfileView) {
-	@block.Head(profile.AppName, profile.DisplayName, profile.HelpCenterURL, true) {
+templ Home(profile app.ProfileView) {
+	@layout.Head(profile.AppName, profile.DisplayName, profile.HelpCenterURL, true) {
 		<h1 class="my-3 text-5xl font-bold">{ profile.AppName }</h1>
 		<table class="table">
 			<thead>
@@ -24,7 +24,7 @@ templ Home(profile data.ProfileView) {
 			</tbody>
 		</table>
 		<div class="sections">
-			@card.Card(profile.Enabled, true)
+			@components.Card(profile.Enabled, true)
 		</div>
 	}
 }

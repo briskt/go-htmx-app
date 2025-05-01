@@ -12,7 +12,7 @@ import (
 	"github.com/briskt/go-htmx-app/app"
 	"github.com/briskt/go-htmx-app/data"
 	"github.com/briskt/go-htmx-app/public/view"
-	"github.com/briskt/go-htmx-app/public/view/card"
+	"github.com/briskt/go-htmx-app/public/view/components"
 )
 
 var enabled bool
@@ -27,9 +27,9 @@ func home(c echo.Context) error {
 	return renderHome(c, user)
 }
 
-// renderHome renders the "home.gohtml" template
+// renderHome renders the "home" templ template
 func renderHome(c echo.Context, user data.User) error {
-	profileData := data.ProfileView{
+	profileData := app.ProfileView{
 		AppName:       app.Env.AppName,
 		DisplayName:   user.GetDisplayName(),
 		Enabled:       enabled,
@@ -46,7 +46,7 @@ func renderHome(c echo.Context, user data.User) error {
 // card responds to the button on "card"
 func cardItem(c echo.Context) error {
 	enabled = !enabled
-	return c.Render(http.StatusOK, "", card.Card(enabled, true))
+	return c.Render(http.StatusOK, "", components.Card(enabled, true))
 }
 
 // formatNullDate returns a long-form, user-friendly date string from a valid sql.NullTime. If invalid, it returns "-"

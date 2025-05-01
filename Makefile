@@ -16,3 +16,4 @@ migrate_test:
 
 new_migration:
 	docker compose run --rm app bash -c "goose -dir goose postgres 'postgres://user:pass@db/db?sslmode=disable' create change_me sql"
+	

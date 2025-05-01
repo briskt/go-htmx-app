@@ -1,4 +1,4 @@
-package data
+package app
 
 import "github.com/a-h/templ"
 
