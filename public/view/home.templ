@@ -7,22 +7,19 @@ import (
 )
 
 templ Home(profile app.ProfileView) {
+	{{
+		profileViewTableStructure := []app.TableStructureItem[app.ProfileView]{
+			{Label: "Username", RenderCell: func(row app.ProfileView) string {
+				return row.Username
+			}},
+			{Label: "Last Login", RenderCell: func(row app.ProfileView) string {
+				return row.LastLogin
+			}},
+		}
+	}}
 	@layout.Head(profile.AppName, profile.DisplayName, profile.HelpCenterURL, true) {
 		<h1 class="my-3 text-5xl font-bold">{ profile.AppName }</h1>
-		<table class="table">
-			<thead>
-				<tr>
-					<th>Username</th>
-					<th>Last login</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<th>{ profile.Username }</th>
-					<td>{ profile.LastLogin }</td>
-				</tr>
-			</tbody>
-		</table>
+		@components.Table(profileViewTableStructure, []app.ProfileView{profile})
 		<div class="sections">
 			@components.Card(profile.Enabled, true)
 		</div>

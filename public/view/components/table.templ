@@ -1,0 +1,28 @@
+package components
+
+import "github.com/briskt/go-htmx-app/app"
+
+templ Table[T any](structure []app.TableStructureItem[T], data []T) {
+	<table class="table">
+		<thead>
+			for _, col := range structure {
+				<th>{ col.Label }</th>
+			}
+		</thead>
+		<tbody>
+			if len(data) == 0 {
+				<tr>
+					<td>No results</td>
+				</tr>
+			} else {
+				for _, row := range data {
+					<tr>
+						for _, col := range structure {
+							<td>{ col.RenderCell(row) }</td>
+						}
+					</tr>
+				}
+			}
+		</tbody>
+	</table>
+}
