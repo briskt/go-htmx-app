@@ -1,0 +1,8 @@
+{
+  "name": "Go HTMX App",
+  "version": "1.0.0",
+  "devDependencies": {
+    "tailwindcss": "^4",
+    "daisyui": "^5"
+  }
+}

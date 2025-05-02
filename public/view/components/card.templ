@@ -1,0 +1,22 @@
+package components
+
+templ Card(enabled bool, fullWidth bool) {
+	<div class={ "p-10 bg-white shadow-sm card w-96", templ.KV("w-full", fullWidth) } id="card">
+		<div class="card-body">
+			<h1 class="card-title">Card</h1>
+			<p>
+				This is a card component that can be used to display information or actions!
+			</p>
+			<div class="divider"></div>
+			<div class="card-actions">
+				<button class="btn" hx-put="/card" hx-target="#card" hx-swap="outerHTML">
+					if enabled {
+						Turn Off 
+					} else {
+						Turn On
+					}
+				</button>
+			</div>
+		</div>
+	</div>
+}

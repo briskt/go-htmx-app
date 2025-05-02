@@ -1,0 +1,27 @@
+package view
+
+import (
+	"github.com/briskt/go-htmx-app/app"
+	"github.com/briskt/go-htmx-app/public/view/components"
+	"github.com/briskt/go-htmx-app/public/view/layout"
+)
+
+templ Home(profile app.ProfileView) {
+	{{
+		profileViewTableStructure := []app.TableStructureItem[app.ProfileView]{
+			{Label: "Username", RenderCell: func(row app.ProfileView) string {
+				return row.Username
+			}},
+			{Label: "Last Login", RenderCell: func(row app.ProfileView) string {
+				return row.LastLogin
+			}},
+		}
+	}}
+	@layout.Head(profile.AppName, profile.DisplayName, profile.HelpCenterURL, true) {
+		<h1 class="my-3 text-5xl font-bold">{ profile.AppName }</h1>
+		@components.Table(profileViewTableStructure, []app.ProfileView{profile})
+		<div class="sections">
+			@components.Card(profile.Enabled, true)
+		</div>
+	}
+}

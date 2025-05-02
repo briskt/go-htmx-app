@@ -18,7 +18,7 @@ x-saml_env: &saml_env
 
 x-postgres_healthcheck: &postgres_healthcheck
   healthcheck:
-    test: [ "CMD", "pg_isready", "-d", "db", "-U", "user" ]
+    test: ["CMD", "pg_isready", "-d", "db", "-U", "user"]
     start_period: 1s
     interval: 500ms
     timeout: 100ms
@@ -26,14 +26,13 @@ x-postgres_healthcheck: &postgres_healthcheck
 
 x-mysql_healthcheck: &mysql_healthcheck
   healthcheck:
-    test: [ "CMD", "healthcheck.sh", "--connect", "--innodb_initialized" ]
+    test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
     start_period: 10s
     interval: 10s
     timeout: 5s
     retries: 3
 
 services:
-
   app:
     build: .
     depends_on:
@@ -43,12 +42,12 @@ services:
         condition: service_healthy
     volumes:
       - .:/src
-    ports: [ "8100:80" ]
+    ports: ["8100:80"]
     env_file:
       - path: ./local.env
         required: false
     environment:
-      <<: [ *db_env, *saml_env ]
+      <<: [*db_env, *saml_env]
       APP_ENV: "dev"
       API_ACCESS_KEYS: "abc123"
       DISABLE_TLS: "true"
@@ -56,12 +55,12 @@ services:
       SESSION_SECRET: "abcdefgh01234567"
     command: >
       bash -c "goose -dir goose postgres -allow-missing 'postgres://user:pass@db/db?sslmode=disable' up &&
-      goose postgres -dir dev/seeds 'postgres://user:pass@db/db?sslmode=disable' up &&
+      goose postgres -dir dev/seeds 'postgres://user:pass@db/db?sslmode=disable' up && npm install &&
       air"
 
   db:
     image: postgres:17
-    ports: [ "8103:5432" ]
+    ports: ["8103:5432"]
     environment: *db_env
     <<: *postgres_healthcheck
 
@@ -73,7 +72,7 @@ services:
     volumes:
       - .:/src
     environment:
-      <<: [ *db_env, *saml_env ]
+      <<: [*db_env, *saml_env]
       APP_ENV: "test"
       DISABLE_TLS: "true"
       DB_HOST: "test_db"
@@ -81,17 +80,17 @@ services:
 
   test_db:
     image: postgres:17
-    ports: [ "5432" ]
+    ports: ["5432"]
     environment: *db_env
     <<: *postgres_healthcheck
 
   adminer:
     image: adminer
-    ports: [ "8101:8080" ]
+    ports: ["8101:8080"]
 
   adminer_testdb:
     image: adminer
-    ports: [ "8102:8080" ]
+    ports: ["8102:8080"]
 
   idp:
     image: silintl/ssp-base:10
@@ -105,7 +104,7 @@ services:
       - ./dev/ssp-base/saml.pem:/data/vendor/simplesamlphp/simplesamlphp/cert/saml.pem
       - ./dev/ssp-base/saml20-idp-hosted.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-idp-hosted.php
       - ./dev/ssp-base/saml20-sp-remote.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-sp-remote.php
-    ports: [ "8106:80" ]
+    ports: ["8106:80"]
     environment:
       ADMIN_PASS: "pass"
       BASE_URL_PATH: "http://localhost:8106"
@@ -126,13 +125,13 @@ services:
 
   idp_db:
     image: mariadb:10
-    ports: [ "3306" ]
+    ports: ["3306"]
     environment: *mysql_env
     <<: *mysql_healthcheck
 
   broker:
     image: silintl/idp-id-broker:6
-    ports: [ "8107:80" ]
+    ports: ["8107:80"]
     depends_on:
       broker_db:
         condition: service_healthy
@@ -150,21 +149,21 @@ services:
       APP_ENV: "dev"
       <<: *mysql_env
       RP_ORIGINS: "https://idp"
-    command: [ "bash", "-c", "./yii migrate --interactive=0 && ./run.sh" ]
+    command: ["bash", "-c", "./yii migrate --interactive=0 && ./run.sh"]
 
   broker_db:
     image: mariadb:10
-    ports: [ "3306" ]
+    ports: ["3306"]
     environment: *mysql_env
     <<: *mysql_healthcheck
 
   broker_pma:
     image: phpmyadmin
-    ports: [ "8108:80" ]
+    ports: ["8108:80"]
     environment:
       PMA_HOST: "broker_db"
       PMA_USER: "user"
       PMA_PASSWORD: "pass"
 
 volumes:
-  composer-cache: { }
+  composer-cache: {}

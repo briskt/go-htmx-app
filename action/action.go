@@ -86,7 +86,7 @@ func NewApp(config *Config) *App {
 		}
 		a.Use(session.Middleware(a.store))
 
-		a.Renderer = public.NewRenderer()
+		a.Renderer = &public.TemplRenderer{}
 
 		a.Use(requestLogger())
 
@@ -139,7 +139,7 @@ func NewApp(config *Config) *App {
 
 		// HTML endpoints for UI
 		a.GET("/", home)
-		a.PUT("/card", card)
+		a.PUT("/card", cardItem)
 
 		// for ECS healthcheck
 		a.GET("/site/status", siteStatus)

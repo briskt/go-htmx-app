@@ -1,30 +1,40 @@
 package public
 
 import (
-	"html/template"
+	"context"
 	"io"
 	"net/http"
 
+	"github.com/a-h/templ"
 	"github.com/labstack/echo/v4"
 
 	"github.com/briskt/go-htmx-app/api"
 )
 
-type Renderer struct {
-	templates *template.Template
-}
+// TemplRenderer renders TEMPL components for Echo.
+type TemplRenderer struct{}
 
-// Render is a custom Echo renderer for templates. It buffers the result in case there's an error. Otherwise, a portion
-// of the page will be sent with the error.
-func (r *Renderer) Render(w io.Writer, name string, data interface{}, _ echo.Context) error {
-	if err := r.templates.ExecuteTemplate(w, name, data); err != nil {
+// Render renders a TEMPL component.
+// The `data` must be of type templ.Component or a function returning one.
+func (r *TemplRenderer) Render(w io.Writer, name string, data interface{}, _ echo.Context) error {
+	var comp templ.Component
+
+	switch v := data.(type) {
+	case templ.Component:
+		comp = v
+	case func() templ.Component:
+		comp = v()
+	default:
+		return api.NewAppError(
+			http.ErrNotSupported,
+			api.ErrorRenderingTemplate,
+			http.StatusInternalServerError,
+		)
+	}
+
+	err := comp.Render(context.Background(), w)
+	if err != nil {
 		return api.NewAppError(err, api.ErrorRenderingTemplate, http.StatusInternalServerError)
 	}
 	return nil
-}
-
-func NewRenderer() *Renderer {
-	return &Renderer{
-		templates: template.Must(template.ParseFS(EFS(), "view/*.gohtml", "view/*/*.gohtml")),
-	}
 }
