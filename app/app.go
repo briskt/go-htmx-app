@@ -41,8 +41,8 @@ func init() {
 }
 
 func OpenDatabase() (*sql.DB, error) {
-	dsn := fmt.Sprintf("postgresql://%s:%s@%s:5432/%s?sslmode=disable",
-		Env.PostgresUser, Env.PostgresPassword, Env.PostgresHost, Env.PostgresDB)
+	dsn := fmt.Sprintf("postgresql://%s:%s@%s:5432/%s?sslmode=%s",
+		Env.PostgresUser, Env.PostgresPassword, Env.PostgresHost, Env.PostgresDB, Env.PostgresSSLMode)
 	db, err := sql.Open("pgx", dsn)
 	if err != nil {
 		return nil, fmt.Errorf("failed to open database: %w", err)

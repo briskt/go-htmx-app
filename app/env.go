@@ -40,6 +40,7 @@ var Env struct {
 	PostgresPassword string `split_words:"true"`
 	PostgresHost     string `split_words:"true"`
 	PostgresDB       string `split_words:"true"`
+	PostgresSSLMode  string `split_words:"true" default:"disable"`
 
 	SamlSpEntityID                  string `split_words:"true"`
 	SamlSpCert                      string `split_words:"true"`
